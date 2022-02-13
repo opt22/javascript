@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title></title>
+
+  <style>
+    .todoItem:hover {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="todos">
+    <h2>Pending Todos</h2>
+    <ul>
+      <li class="todoItem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, animi.</li>
+      <li class="todoItem">Numquam dolor quo alias nam vel voluptates magni magnam quisquam.</li>
+      <li class="todoItem">Recusandae eaque quisquam facere ab reprehenderit cupiditate magni placeat quis?</li>
+      <li class="todoItem">Expedita asperiores nam saepe voluptatem, nostrum aliquid debitis quam recusandae.</li>
+      <li class="todoItem">Quaerat velit deserunt reprehenderit, vel placeat impedit accusamus non, deleniti!</li>
+    </ul>
+  </div>
+
+  <h2>Completed Todos</h2>
+  <ul class="completedTodoWrapper">
+    <div class="completed"></div>
+  </ul>
+</body>
+
+<script>
+
+//select item class
+const todoList = document.querySelector('.todos').childNodes[3]
+const doneList = document.querySelector('.completedTodoWrapper')
+let todoItem = document.querySelectorAll('.todoItem')
+let completedTarget = document.querySelector('.completed');
+
+//event function
+
+function evtClick (event) {
+    let tgt = event.target
+    let nodeName = tgt.parentNode.localName;
+    let className = tgt.parentNode.className;
+
+    if (nodeName === "ul" && className === ""){
+        doneList.insertBefore(tgt, completedTarget)
+    } else if(nodeName === "ul" && className === "completedTodoWrapper"){
+            //todoList.insertBefore(tgt, todoList)
+        todoList.appendChild(tgt)
+    }
+}
+function addEvt (item) {
+    item.addEventListener('click', evtClick);
+}
+todoItem.forEach(addEvt)
+
+//////////////////////////QUE?
+//
+//let todoItem = document.querySelectorAll('.todoItem')
+//
+//function dothing () {
+//    console.log("click test");
+//}
+//
+//function something (item) {
+//    console.log(item);
+//    console.log(item.localName) //<<--------------------------
+//    console.log(item.onclick) //<<--------------------------
+//    item.onclick = dothing()  
+//    console.log(item.onclick) //<<--------------------------
+//
+//    //item.onclick = "console.log('this is another click')"
+//    //item.addEventListener('click', (console.log('this is a click')));
+////    console.log(item.onclick) //<<--------------------------
+//}
+//todoItem.forEach(something)
+//console.log(todoItem);
+//todoItem.forEach(something)
+////////////////////////QUE?
+//console.log(document.querySelector('.todoItem[1]').onclick);
+</script>
+
+</html>

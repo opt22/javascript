@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "eslint-plugin-html": "^6.2.0",
+    "prompt": "^1.2.0",
+    "prompt-sync": "^4.2.0"
+  }
+}
